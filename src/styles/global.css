@@ -25,7 +25,8 @@
 html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 body { margin: 0; min-width: 320px; background: var(--paper); }
 body, button, input, select, textarea { font-family: "DM Sans", sans-serif; }
-@font-face { font-family: "Altier"; src: local("Altier"), local("Altier Regular"); font-display: swap; }
+@font-face { font-family: "Altair"; src: url("../assets/fonts/Altair-Thin-Trial.ttf") format("truetype"); font-style: normal; font-weight: 100; font-display: swap; }
+@font-face { font-family: "Altair"; src: url("../assets/fonts/Altair-Bold-Trial.ttf") format("truetype"); font-style: normal; font-weight: 700; font-display: swap; }
 button, a { -webkit-tap-highlight-color: transparent; }
 button { color: inherit; }
 a { color: inherit; text-decoration: none; }
@@ -50,14 +51,9 @@ html[data-brand="frozzo"] .nav-link::after { background: var(--cyan); }
 html[data-brand="frozzo"] .nav-cta.MuiButton-root { border-color: rgba(99,181,201,.38); color: var(--cyan); }
 html[data-brand="frozzo"] .menu-toggle { color: var(--cyan); }
 .nav-wrap { width: min(1440px, 100%); height: 100%; margin: auto; padding: 0 5.3%; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-.brand-mark { position: relative; display: flex; align-items: center; gap: 10px; width: auto; height: 64px; flex: 0 0 auto; overflow: visible; }
-.brand-mark-symbol { display: grid; width: 49px; height: 49px; flex: 0 0 49px; place-items: center; border-radius: 4px; background: #fff; }
-.brand-mark-symbol img { width: 40px; height: 40px; object-fit: contain; }
-.brand-mark-wordmark { color: var(--forest); font: 700 14px/1.1 var(--accent); letter-spacing: .045em; white-space: nowrap; }
-.brand-mark-wordmark small { display: block; margin-top: 4px; font-size: 10px; letter-spacing: .24em; }
-.brand-mark-light .brand-mark-wordmark { color: #fff; }
+.brand-mark { position: relative; display: flex; align-items: center; width: 136px; height: 64px; flex: 0 0 136px; overflow: visible; }
+.brand-mark-logo { display: block; width: 136px; height: 64px; object-fit: contain; object-position: left center; }
 .brand-logo { display: block; max-width: 100%; }
-html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
 .desktop-nav { display: flex; align-items: center; gap: clamp(20px, 3vw, 42px); }
 .nav-link { position: relative; padding: 30px 0 27px; color: #4a594f; font-size: 14px; font-weight: 600; transition: color .2s; }
 .nav-link::after { position: absolute; right: 0; bottom: 20px; left: 0; height: 2px; content: ""; background: var(--green); transform: scaleX(0); transform-origin: left; transition: transform .24s; }
@@ -98,8 +94,8 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
 .universe-label i { font-size: 13px; font-style: normal; }
 .fresh-split .universe-label { font-family: "Quicksand", sans-serif; }
 .fresh-split .universe-label h2 { font-family: "Eczar", Georgia, serif; letter-spacing: -.04em; }
-.frozzo-split .universe-label { font-family: "Altier", "Outfit", sans-serif; }
-.frozzo-split .universe-label h2 { font-family: "Altier", "Outfit", sans-serif; letter-spacing: -.04em; }
+.frozzo-split .universe-label { font-family: "Altair", "Outfit", sans-serif; }
+.frozzo-split .universe-label h2 { font-family: "Altair", "Outfit", sans-serif; line-height: 1.12; letter-spacing: -.04em; }
 .brand-intro { padding-top: 126px; }
 .brand-intro .section-heading { text-align: center; }
 .brand-intro .section-heading > p { margin-right: auto; margin-left: auto; }
@@ -109,7 +105,7 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
 .brand-card-frozzo::after { background: linear-gradient(90deg,rgba(2,15,20,.8),rgba(2,15,20,.1) 100%),linear-gradient(0deg,rgba(2,15,20,.34),transparent 80%); }
 .brand-card > img { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .7s; }
 .brand-card-fresh { --brand-display: "Eczar", Georgia, serif; --brand-body: "Quicksand", sans-serif; }
-.brand-card-frozzo { --brand-display: "Altier", "Outfit", sans-serif; --brand-body: "Altier", "DM Sans", sans-serif; }
+.brand-card-frozzo { --brand-display: "Altair", "Outfit", sans-serif; --brand-body: "Altair", "DM Sans", sans-serif; }
 .brand-card-fresh .brand-card-content { font-family: var(--brand-body); }
 .brand-card-frozzo .brand-card-content { font-family: var(--brand-body); }
 .brand-card-fresh .brand-card-content h3, .brand-card-frozzo .brand-card-content h3 { font-family: var(--brand-display); letter-spacing: -.035em; }
@@ -117,6 +113,7 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
 .brand-card-content { position: absolute; bottom: 48px; left: 43px; max-width: 335px; }
 .brand-card-content > span { color: rgba(255,255,255,.8); font: 600 11px var(--accent); letter-spacing: .15em; }
 .brand-card-content h3 { margin: 13px 0; font-size: clamp(37px,4.5vw,58px); font-weight: 500; line-height: .98; }
+.brand-card-frozzo .brand-card-content h3 { line-height: 1.12; }
 .brand-card-content p { max-width: 300px; margin-bottom: 22px; color: rgba(255,255,255,.8); font-size: 14px; line-height: 1.7; }
 .brand-card-content button { padding: 0 0 6px; border: 0; border-bottom: 1px solid rgba(255,255,255,.55); background: transparent; color: white; font-size: 13px; font-weight: 700; cursor: pointer; }
 .brand-card-content button b { margin-left: 10px; color: var(--lime); font-size: 18px; }
@@ -143,8 +140,8 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
 .brand-products-fresh .brand-products-copy h2 { font-family: "Eczar", Georgia, serif; letter-spacing: -.035em; }
 .brand-products-fresh .brand-products-copy > .eyebrow,
 .brand-products-fresh .brand-products-copy h2 em { color: var(--forest); }
-.brand-products-frozzo .brand-products-copy { font-family: "Altier", "DM Sans", sans-serif; }
-.brand-products-frozzo .brand-products-copy h2 { font-family: "Altier", "Outfit", sans-serif; letter-spacing: -.035em; }
+.brand-products-frozzo .brand-products-copy { font-family: "Altair", "DM Sans", sans-serif; }
+.brand-products-frozzo .brand-products-copy h2 { font-family: "Altair", "Outfit", sans-serif; line-height: 1.12; letter-spacing: -.035em; }
 .brand-products-frozzo .brand-products-copy > .eyebrow { color: var(--cyan); }
 .brand-products-frozzo .brand-products-copy h2 em { color: var(--cyan); }
 .brand-products-frozzo .brand-products-copy p { color: rgba(255,255,255,.72); }
@@ -189,12 +186,23 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
 .product-info .text-link { margin-top: auto; }
 .text-link { display: inline-flex; gap: 10px; align-items: center; margin-top: 17px; padding: 0 0 4px; border: 0; border-bottom: 1px solid rgba(32,96,64,.25); background: transparent; color: var(--forest); font-size: 12px; font-weight: 700; cursor: pointer; }
 .text-link span { font-size: 17px; }
-.partner-banner { position: relative; min-height: 350px; display: flex; align-items: center; justify-content: center; padding: 70px 11%; overflow: hidden; background: var(--forest); color: #fff; }
-.partner-copy { position: relative; z-index: 1; max-width: 620px; }
+.partner-banner { position: relative; isolation: isolate; min-height: 560px; display: grid; grid-template-columns: minmax(0,.92fr) minmax(0,1.08fr); align-items: center; gap: 7%; padding: 78px 8.5%; overflow: hidden; background: #1b593c; color: #fff; }
+.partner-banner::before { position: absolute; z-index: -1; inset: 0; content: ""; background: radial-gradient(circle at 79% 48%,rgba(106,154,27,.42),transparent 30%),linear-gradient(115deg,#206040,#174c34); }
+.partner-banner::after { position: absolute; z-index: -1; top: -58%; right: -9%; width: min(72vw,920px); aspect-ratio: 1; border: 1px solid rgba(255,255,255,.13); border-radius: 50%; box-shadow: 0 0 0 42px rgba(255,255,255,.035),0 0 0 84px rgba(255,255,255,.025); content: ""; pointer-events: none; }
+.partner-copy { position: relative; z-index: 2; max-width: 620px; }
 .partner-copy .eyebrow { color: var(--lime); }
-.partner-copy h2 { margin: 20px 0 13px; font-size: clamp(44px,5.5vw,70px); font-weight: 500; line-height: .97; }
+.partner-copy h2 { margin: 20px 0 15px; font-size: clamp(48px,4.7vw,68px); font-weight: 500; line-height: 1.04; letter-spacing: -.055em; }
 .partner-copy h2 em { color: var(--lime); }
-.partner-copy p { max-width: 395px; margin-bottom: 23px; color: rgba(255,255,255,.75); font-size: 16px; line-height: 1.75; }
+.partner-copy p { max-width: 420px; margin-bottom: 25px; color: rgba(255,255,255,.78); font-size: 16px; line-height: 1.75; }
+.partner-visual { position: relative; justify-self: end; width: min(100%,590px); height: 420px; }
+.partner-photo { position: absolute; overflow: hidden; background: #0b3944; box-shadow: 0 24px 60px rgba(2,15,20,.25); }
+.partner-photo img { width: 100%; height: 100%; object-fit: cover; }
+.partner-photo-main { top: 3%; right: 2%; width: 79%; height: 84%; border: 1px solid rgba(255,255,255,.25); border-radius: 22px; }
+.partner-photo-fresh { z-index: 1; bottom: 1%; left: 1%; width: 43%; height: 49%; border: 6px solid #1b593c; border-radius: 20px; }
+.partner-brand-badge { position: absolute; z-index: 2; top: 10%; left: 0; display: flex; align-items: center; gap: 10px; padding: 13px 17px; border: 1px solid rgba(255,255,255,.65); border-radius: 99px; background: var(--lime); color: var(--forest); box-shadow: 0 14px 35px rgba(2,15,20,.16); font: 700 10px var(--accent); letter-spacing: .1em; }
+.partner-brand-badge b { color: #708f13; font-size: 16px; }
+.partner-visual-note { position: absolute; z-index: 2; right: 0; bottom: 4%; display: flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid rgba(255,255,255,.25); border-radius: 99px; background: rgba(2,15,20,.42); color: rgba(255,255,255,.88); font: 600 9px var(--accent); letter-spacing: .12em; backdrop-filter: blur(8px); }
+.partner-visual-note i { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); }
 .button-light.MuiButton-root { padding: 12px 19px; border-radius: 99px; background: var(--lime); color: var(--forest); font-size: 13px; font-weight: 700; }
 .button-light.MuiButton-root:hover { background: #f2ec50; }
 .button-light span { margin-left: 12px; font-size: 16px; }
@@ -212,7 +220,13 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
 .footer-brand-link > span svg { color: var(--cyan); font-size: 18px; }
 .footer-brand-link { display: flex; align-items: center; }
 .footer-bottom { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 15px; padding: 18px 0 19px; border-top: 1px solid rgba(255,255,255,.13); color: rgba(255,255,255,.46); font-size: 11px; }
-.footer-bottom button { padding: 0; border: 0; background: transparent; color: white; font-size: 12px; cursor: pointer; }
+.footer-bottom .footer-back-top { display: inline-flex; align-items: center; gap: 12px; padding: 5px 6px 5px 15px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(255,255,255,.035); color: rgba(255,255,255,.9); font-size: 12px; font-weight: 600; letter-spacing: .01em; cursor: pointer; transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease; }
+.footer-bottom .footer-back-top i { display: grid; width: 29px; height: 29px; place-items: center; border-radius: 50%; background: var(--lime); color: var(--forest); transition: transform .2s ease, background .2s ease, color .2s ease; }
+.footer-bottom .footer-back-top svg { display: block; font-size: 20px; }
+.footer-bottom .footer-back-top:hover { transform: translateY(-2px); border-color: rgba(231,226,47,.48); background: rgba(255,255,255,.075); box-shadow: 0 7px 22px rgba(0,0,0,.18); }
+.footer-bottom .footer-back-top:hover i { transform: translateY(-1px); }
+.footer-frozzo .footer-bottom .footer-back-top i { background: var(--cyan); color: #042b34; }
+.footer-frozzo .footer-bottom .footer-back-top:hover { border-color: rgba(99,181,201,.55); }
 /* About */
 .page-hero { position: relative; min-height: 470px; display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; padding: 75px 8.5%; overflow: hidden; background: #edf2e8; }
 .page-hero-copy { position: relative; z-index: 1; padding-right: 30px; }
@@ -258,7 +272,7 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
 .products-pal-fresh { --brand-display: "Eczar", Georgia, serif; --brand-body: "Quicksand", sans-serif; font-family: var(--brand-body); }
 .products-pal-fresh button, .products-pal-fresh input { font-family: var(--brand-body); }
 .products-pal-fresh h1, .products-pal-fresh h2, .products-pal-fresh h3 { font-family: var(--brand-display); letter-spacing: -.035em; }
-.products-frozzo { --brand-display: "Altier", "Outfit", sans-serif; --brand-body: "Altier", "DM Sans", sans-serif; font-family: var(--brand-body); }
+.products-frozzo { --brand-display: "Altair", "Outfit", sans-serif; --brand-body: "Altair", "DM Sans", sans-serif; font-family: var(--brand-body); }
 .products-frozzo button, .products-frozzo input, .products-frozzo h1, .products-frozzo h2, .products-frozzo h3 { font-family: var(--brand-body); }
 .products-hero { position: relative; min-height: 295px; display: flex; align-items: center; justify-content: space-between; padding: 58px 9% 50px; overflow: hidden; background: #e8efdf; }
 .products-frozzo .products-hero { background: linear-gradient(110deg,#022732,var(--night)); }
@@ -266,6 +280,7 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
 .products-hero .eyebrow { color: var(--green); }
 .products-frozzo .products-hero .eyebrow { color: var(--cyan); }
 .products-hero h1 { margin: 15px 0 10px; font-size: clamp(50px,6.3vw,80px); font-weight: 500; line-height: .91; }
+.products-frozzo .products-hero h1 { line-height: 1.12; }
 .products-frozzo .products-hero h1 em { color: var(--cyan); }
 .products-hero p { max-width: 400px; margin: 0; color: #627268; font-size: 14px; }
 .products-frozzo .products-hero p { color: rgba(255,255,255,.62); }
@@ -384,18 +399,19 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
 .tab-intro h2 { font-size: clamp(44px,5vw,60px); }
 .tab-intro p { margin-bottom: 25px; }
 .tab-intro p a { color: var(--forest); text-decoration: underline; }
-.faq-section { display: grid; grid-template-columns: .72fr 1.28fr; column-gap: 8%; row-gap: 28px; }
+.faq-section { display: grid; grid-template-columns: minmax(0,.72fr) minmax(0,1.28fr); column-gap: 8%; row-gap: 28px; }
+.faq-controls, .faq-list { min-width: 0; }
 .faq-controls { display: flex; flex-direction: column; gap: 14px; }
 .faq-controls .search-field { flex-basis: auto; background: white; }
-.faq-categories { gap: 4px; }
+.faq-categories { max-width: 100%; gap: 4px; }
 .faq-categories button { padding: 8px 9px; font-size: 10px; }
 .faq-list { grid-column: 2; }
 .faq-list .MuiAccordion-root { border-bottom: 1px solid rgba(32,96,64,.16); background: transparent; }
 .faq-list .MuiAccordion-root::before { display: none; }
 .faq-list .MuiAccordionSummary-root { min-height: 67px; padding: 0; }
-.faq-list .MuiAccordionSummary-content { display: grid; grid-template-columns: 1fr 1.7fr; align-items: center; gap: 12px; margin: 15px 0; }
+.faq-list .MuiAccordionSummary-content { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.7fr); align-items: center; gap: 12px; min-width: 0; margin: 15px 0; }
 .faq-category { color: #87938a; font: 600 10px var(--accent); letter-spacing: .07em; text-transform: uppercase; }
-.faq-list .MuiAccordionSummary-content strong { color: #2a3a30; font: 600 14px var(--display); }
+.faq-list .MuiAccordionSummary-content strong { min-width: 0; color: #2a3a30; font: 600 14px var(--display); overflow-wrap: anywhere; }
 .accordion-icon { display: grid; width: 23px; height: 23px; place-items: center; border: 1px solid rgba(32,96,64,.28); border-radius: 50%; color: var(--forest); font-size: 18px; }
 .faq-list .Mui-expanded .accordion-icon { background: var(--forest); color: white; }
 .faq-list .MuiAccordionDetails-root { padding: 0 35px 20px calc((100% - 35px) / 2); color: #68766d; font-size: 13px; line-height: 1.8; }
@@ -430,22 +446,49 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
 .upload-field small { color: #96a098; }
 
 /* Gallery and privacy */
-.gallery-page { padding-bottom: 100px; background: #f7f8f4; }
-.gallery-hero { position: relative; min-height: 310px; padding: 66px 10% 48px; overflow: hidden; background: #edf2e8; }
-.gallery-hero .eyebrow, .privacy-hero .eyebrow { position: relative; z-index: 1; }
-.gallery-filters { justify-content: center; gap: 6px; padding: 25px 20px 29px; }
-.gallery-filters button { padding: 10px 15px; }
-.gallery-filters .filter-active { background: var(--forest); color: white; }
-.gallery-grid { display: grid; grid-template-columns: repeat(4,1fr); grid-auto-rows: 220px; gap: 12px; padding: 0 7%; }
-.gallery-tile { position: relative; grid-column: span 1; grid-row: span 1; padding: 0; overflow: hidden; border: 0; background: #dce5d6; text-align: left; cursor: pointer; }
+.gallery-page { padding-bottom: 110px; background: #f7f8f4; }
+.gallery-hero { width: min(1440px,100%); min-height: 570px; margin: auto; padding: 62px 7% 76px; display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 6%; }
+.gallery-hero-copy { max-width: 510px; }
+.gallery-hero .eyebrow { gap: 10px; }
+.gallery-hero .eyebrow i, .gallery-hero-tag i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+.gallery-hero h1 { margin: 24px 0 20px; font-size: clamp(58px,5.4vw,78px); font-weight: 500; line-height: .92; letter-spacing: -.075em; }
+.gallery-hero-copy > p { max-width: 390px; margin: 0; color: #66756a; font-size: 16px; line-height: 1.8; }
+.gallery-hero-link { display: inline-flex; align-items: center; gap: 21px; margin-top: 27px; padding-bottom: 7px; border-bottom: 1px solid rgba(32,96,64,.28); color: var(--forest); font-size: 13px; font-weight: 700; }
+.gallery-hero-link span { color: var(--green); font-size: 17px; transition: transform .2s; }
+.gallery-hero-link:hover span { transform: translateY(3px); }
+.gallery-hero-visual { position: relative; min-width: 0; height: min(39vw,510px); min-height: 380px; overflow: hidden; border-radius: 18px; background: #dce5d6; box-shadow: 0 28px 65px rgba(27,52,36,.12); }
+.gallery-hero-visual::after { position: absolute; inset: 35% 0 0; content: ""; background: linear-gradient(180deg,transparent,rgba(2,15,20,.67)); pointer-events: none; }
+.gallery-hero-visual > img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-hero-tag { position: absolute; z-index: 1; top: 20px; right: 20px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid rgba(255,255,255,.55); border-radius: 99px; background: rgba(255,255,255,.88); color: var(--forest); font-size: 11px; font-weight: 700; backdrop-filter: blur(10px); }
+.gallery-hero-tag i { width: 6px; height: 6px; background: var(--green); }
+.gallery-hero-caption { position: absolute; z-index: 1; right: 26px; bottom: 24px; left: 26px; display: flex; flex-direction: column; gap: 7px; color: white; }
+.gallery-hero-caption small { color: rgba(255,255,255,.75); font: 600 10px var(--accent); letter-spacing: .15em; }
+.gallery-hero-caption b { font: 500 clamp(20px,2.4vw,30px)/1.1 var(--display); letter-spacing: -.03em; }
+.gallery-collection { width: min(1440px,100%); margin: 0 auto; padding: 10px 7% 0; }
+.gallery-collection-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 25px; }
+.gallery-collection-heading .eyebrow { font-size: 10px; }
+.gallery-collection-heading h2 { margin: 12px 0 0; color: var(--ink); font-size: clamp(42px,5vw,62px); font-weight: 500; line-height: .98; }
+.gallery-collection-count { display: flex; align-items: center; gap: 13px; padding-bottom: 5px; }
+.gallery-collection-count b { color: var(--forest); font: 500 39px/.9 var(--display); letter-spacing: -.06em; }
+.gallery-collection-count span, .gallery-filter-label { color: #8a968e; font: 700 9px/1.5 var(--accent); letter-spacing: .12em; }
+.gallery-toolbar { display: flex; align-items: center; gap: 22px; margin-bottom: 17px; border-top: 1px solid rgba(32,96,64,.12); }
+.gallery-filter-label { flex-shrink: 0; }
+.gallery-filters { justify-content: flex-start; gap: 7px; padding: 17px 0; }
+.gallery-filters button { padding: 9px 14px; border: 1px solid rgba(32,96,64,.13); border-radius: 99px; background: rgba(255,255,255,.45); color: #69776d; font-size: 11px; font-weight: 600; white-space: nowrap; cursor: pointer; transition: background .2s,color .2s,border-color .2s,transform .2s; }
+.gallery-filters button:hover { border-color: rgba(32,96,64,.35); color: var(--forest); transform: translateY(-1px); }
+.gallery-filters .filter-active { border-color: var(--forest); background: var(--forest); color: white; }
+.gallery-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); grid-auto-rows: 210px; gap: 15px; }
+.gallery-tile { position: relative; grid-column: span 1; grid-row: span 1; padding: 0; overflow: hidden; border: 0; border-radius: 12px; background: #dce5d6; text-align: left; cursor: pointer; }
 .gallery-tile-0, .gallery-tile-4 { grid-column: span 2; grid-row: span 2; }
-.gallery-tile-2 { grid-column: span 2; }
+.gallery-tile-3 { grid-column: span 2; }
 .gallery-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s; }
 .gallery-tile:hover img { transform: scale(1.06); }
-.gallery-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: end; align-items: flex-start; padding: 18px; background: linear-gradient(0deg,rgba(2,15,20,.75),transparent 67%); color: white; opacity: .9; transition: opacity .2s; }
-.gallery-overlay small { font: 600 10px var(--accent); letter-spacing: .13em; text-transform: uppercase; }
+.gallery-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: end; align-items: flex-start; padding: 20px; background: linear-gradient(0deg,rgba(2,15,20,.78),transparent 72%); color: white; opacity: .94; transition: opacity .2s; }
+.gallery-tile:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay small { font: 600 9px var(--accent); letter-spacing: .13em; text-transform: uppercase; }
 .gallery-overlay b { max-width: 230px; margin-top: 6px; font: 500 19px var(--display); letter-spacing: -.02em; }
-.gallery-overlay i { position: absolute; right: 16px; bottom: 16px; font-size: 17px; font-style: normal; }
+.gallery-overlay i { position: absolute; right: 16px; bottom: 16px; display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; font-size: 15px; font-style: normal; transition: background .2s,color .2s; }
+.gallery-tile:hover .gallery-overlay i { background: white; color: var(--forest); }
 .gallery-dialog.MuiPaper-root { position: relative; overflow: hidden; border-radius: 0; background: #020f14; }
 .lightbox { position: relative; display: flex; align-items: center; justify-content: center; min-height: min(80vh,760px); background: #020f14; }
 .lightbox > img { max-width: 100%; max-height: 75vh; object-fit: contain; }
@@ -494,11 +537,8 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
 @media (max-width: 850px) {
   .site-header { height: 68px; }
   .nav-wrap { padding: 0 5%; }
-  .brand-mark { height: 58px; gap: 8px; }
-  .brand-mark-symbol { width: 43px; height: 43px; flex-basis: 43px; }
-  .brand-mark-symbol img { width: 35px; height: 35px; }
-  .brand-mark-wordmark { font-size: 13px; }
-  .brand-mark-wordmark small { font-size: 10px; }
+  .brand-mark { width: 124px; height: 58px; flex-basis: 124px; }
+  .brand-mark-logo { width: 124px; height: 58px; }
   .desktop-nav, .nav-cta.MuiButton-root { display: none; }
   .menu-toggle { display: block; }
   .mobile-nav { position: absolute; top: 68px; right: 0; left: 0; display: flex; flex-direction: column; padding: 12px 6% 25px; border-top: 1px solid rgba(32,96,64,.1); background: rgba(250,251,248,.98); box-shadow: 0 15px 25px rgba(25,48,30,.09); }
@@ -525,7 +565,10 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
   .journey-step p { font-size: 12px; }
   .brand-products-heading { align-items: flex-start; flex-direction: column; gap: 21px; }
   .product-carousel-slide { flex-basis: calc((100% - 20px) / 2); }
-  .partner-banner { padding: 55px 7%; }
+  .partner-banner { min-height: auto; grid-template-columns: minmax(0,1fr); gap: 31px; padding: 62px 7% 66px; }
+  .partner-copy { max-width: 640px; }
+  .partner-copy h2 { font-size: clamp(50px,7vw,66px); }
+  .partner-visual { justify-self: center; height: 380px; }
   .footer-main { grid-template-columns: 1.2fr 1fr 1fr; gap: 35px 25px; }
   .footer-about { grid-row: span 2; }
   .page-hero { min-height: 405px; padding: 56px 7%; }
@@ -544,7 +587,12 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
   .contact-content { padding-right: 6%; padding-left: 6%; }
   .contact-general, .distributor-section { gap: 5%; }
   .faq-section { column-gap: 5%; }
-  .gallery-grid { grid-auto-rows: 175px; padding: 0 5%; }
+  .gallery-hero { min-height: auto; padding: 45px 6% 55px; grid-template-columns: 1fr; gap: 30px; }
+  .gallery-hero-copy { max-width: 620px; }
+  .gallery-hero h1 { font-size: clamp(60px,9vw,78px); }
+  .gallery-hero-visual { height: min(48vw,420px); min-height: 340px; }
+  .gallery-collection { padding-right: 6%; padding-left: 6%; }
+  .gallery-grid { grid-template-columns: repeat(2,minmax(0,1fr)); grid-auto-rows: 175px; gap: 12px; }
   .privacy-layout { grid-template-columns: 200px 1fr; gap: 35px; padding-right: 6%; padding-left: 6%; }
 }
 @media (max-width: 600px) {
@@ -584,8 +632,14 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
   .product-info p { font-size: 12px; }
   .product-category { font-size: 10px; }
   .text-link { margin-top: 12px; font-size: 11px; }
-  .partner-banner { padding: 45px 7% 56px; }
-  .partner-copy h2 { font-size: 50px; }
+  .partner-banner { gap: 24px; padding: 47px 6% 57px; }
+  .partner-copy h2 { font-size: clamp(42px,11vw,54px); }
+  .partner-copy p { max-width: 360px; font-size: 14px; }
+  .partner-visual { height: min(76vw,310px); min-height: 250px; }
+  .partner-photo-main { width: 82%; height: 82%; border-radius: 16px; }
+  .partner-photo-fresh { width: 44%; height: 48%; border-width: 5px; border-radius: 15px; }
+  .partner-brand-badge { top: 7%; gap: 7px; padding: 10px 12px; font-size: 8px; }
+  .partner-visual-note { right: 0; bottom: 1%; padding: 8px 10px; font-size: 8px; }
   .site-footer { padding: 70px 7% 0; }
   .footer-main { grid-template-columns: repeat(2,1fr); gap: 34px 20px; padding-bottom: 43px; }
   .footer-about { grid-column: span 2; grid-row: auto; }
@@ -657,7 +711,7 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
   .contact-tabs button { flex-direction: column-reverse; gap: 4px; padding: 13px 1px; font-size: 11px; }
   .contact-tabs button > span { font-size: 10px; }
   .contact-content { padding: 38px 6% 72px; }
-  .contact-general, .distributor-section, .faq-section { grid-template-columns: 1fr; gap: 28px; }
+  .contact-general, .distributor-section, .faq-section { grid-template-columns: minmax(0,1fr); gap: 28px; }
   .contact-intro { padding-top: 0; }
   .contact-intro h2 { font-size: 46px; }
   .contact-intro > p { margin-bottom: 20px; }
@@ -674,22 +728,37 @@ html[data-brand="frozzo"] .brand-mark-wordmark { color: #f2f7f8; }
   .faq-list .MuiAccordionSummary-content { grid-template-columns: 1fr auto; }
   .faq-list .MuiAccordionSummary-content strong { font-size: 13px; }
   .faq-list .MuiAccordionDetails-root { padding-left: 0; }
-  .faq-categories { flex-wrap: nowrap; width: calc(100vw - 12%); overflow-x: auto; }
+  .faq-categories { flex-wrap: nowrap; width: 100%; overflow-x: auto; }
   .faq-categories button { flex-shrink: 0; }
   .perks-row { grid-template-columns: 1fr; gap: 8px; margin: 25px 0 42px; }
   .jobs-header { align-items: flex-start; flex-direction: column; gap: 15px; }
   .job-row { gap: 10px; }
   .job-row h4 { font-size: 18px; }
   .job-row > button { flex-shrink: 0; }
-  .gallery-hero { min-height: 286px; padding: 45px 6%; }
-  .gallery-filters { justify-content: flex-start; flex-wrap: nowrap; padding: 18px 5%; overflow-x: auto; }
-  .gallery-filters button { flex-shrink: 0; font-size: 10px; }
-  .gallery-grid { grid-template-columns: repeat(2,1fr); grid-auto-rows: 140px; gap: 8px; padding: 0 4%; }
+  .gallery-hero { min-height: auto; padding: 40px 6% 47px; grid-template-columns: 1fr; gap: 28px; }
+  .gallery-hero-copy { max-width: 470px; }
+  .gallery-hero h1 { margin: 20px 0 16px; font-size: clamp(53px,14vw,72px); }
+  .gallery-hero-copy > p { font-size: 14px; }
+  .gallery-hero-link { margin-top: 20px; }
+  .gallery-hero-visual { height: min(76vw,370px); min-height: 255px; border-radius: 14px; }
+  .gallery-hero-tag { top: 12px; right: 12px; padding: 8px 10px; font-size: 10px; }
+  .gallery-hero-caption { right: 16px; bottom: 16px; left: 16px; }
+  .gallery-collection { padding: 0 6% 0; }
+  .gallery-collection-heading { margin-bottom: 18px; }
+  .gallery-collection-heading h2 { font-size: 40px; }
+  .gallery-collection-count { gap: 8px; }
+  .gallery-collection-count b { font-size: 32px; }
+  .gallery-collection-count span, .gallery-filter-label { font-size: 8px; }
+  .gallery-toolbar { align-items: flex-start; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+  .gallery-filter-label { padding-top: 13px; }
+  .gallery-filters { width: 100%; gap: 6px; padding: 6px 0 14px; overflow-x: auto; }
+  .gallery-filters button { flex-shrink: 0; padding: 8px 11px; font-size: 10px; }
+  .gallery-grid { grid-auto-rows: 140px; gap: 9px; }
   .gallery-tile-0, .gallery-tile-4 { grid-column: span 2; grid-row: span 2; }
-  .gallery-tile-2 { grid-column: span 2; }
-  .gallery-overlay { padding: 10px; }
-  .gallery-overlay b { font-size: 18px; }
-  .gallery-overlay small { font-size: 10px; }
+  .gallery-tile-3 { grid-column: span 2; }
+  .gallery-overlay { padding: 12px; }
+  .gallery-overlay b { max-width: 190px; font-size: 16px; }
+  .gallery-overlay small { font-size: 8px; }
   .gallery-overlay i { right: 10px; bottom: 10px; font-size: 16px; }
   .lightbox { min-height: 65vh; }
   .lightbox-caption { padding: 48px 16px 16px; }

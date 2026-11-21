@@ -95,6 +95,12 @@ export default function Home() {
     </section>
     <section className="partner-banner">
       <div className="partner-copy"><span className="eyebrow">A GOOD THING, SHARED</span><h2>Let’s make room<br />for <em>more good.</em></h2><p>Retail, distribution, or food service—we’d love to hear what we can create together.</p><Button component={Link} to="/contact?tab=distributor" className="button-light">Let’s talk partnership <span>↗</span></Button></div>
+      <div className="partner-visual" aria-hidden="true">
+        <div className="partner-photo partner-photo-main"><img src={imageUrl('photo-1573080496219-bb080dd4f877', 1100)} alt="" loading="lazy" /></div>
+        <div className="partner-photo partner-photo-fresh"><img src={imageUrl('photo-1518843875459-f738682238a6', 650)} alt="" loading="lazy" /></div>
+        <div className="partner-brand-badge"><span>PAL FRESH</span><b>+</b><span>FROZZO</span></div>
+        <div className="partner-visual-note"><i /> ROOTED IN GOOD FOOD</div>
+      </div>
     </section>
     <ProductDialog product={selectedProduct} onClose={() => setSelectedProduct(null)} />
   </main>;
