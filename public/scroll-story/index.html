@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#d8d8c8" />
+    <meta name="description" content="A scroll-led story of Pal Frozen Foods, from Uttarakhand's fields to your table." />
+    <title>From Field to Freezer | Pal Frozen Foods</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body id="top">
+    <header class="story-nav" id="storyNav">
+      <a class="story-wordmark" href="#top" aria-label="Pal Frozen Foods story home">PAL FROZEN FOODS</a>
+      <nav aria-label="Story navigation">
+        <a href="#story">Our story</a>
+        <a href="#story-end">The promise</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="story-track" id="story" aria-label="The Pal Frozen Foods journey">
+        <div class="story-sticky">
+          <canvas id="storyCanvas" aria-label="Illustrated journey from farm to freezer"></canvas>
+          <div class="story-shade" aria-hidden="true"></div>
+
+          <div class="story-copy" aria-live="off">
+            <article class="story-chapter is-active" data-chapter="0">
+              <span class="story-kicker">FROM THE FIELDS OF UTTARAKHAND</span>
+              <h1>Goodness starts<br />where it grows.</h1>
+              <p>Good food begins with good soil, thoughtful farming, and the people who care for every crop.</p>
+            </article>
+            <article class="story-chapter" data-chapter="1" aria-hidden="true">
+              <span class="story-kicker">GROWN WITH CARE</span>
+              <h2>Picked at its best.</h2>
+              <p>Working with farming partners helps us plan for the harvest and bring vegetables in at the right moment.</p>
+            </article>
+            <article class="story-chapter" data-chapter="2" aria-hidden="true">
+              <span class="story-kicker">FRESHNESS, HELD ON TO</span>
+              <h2>Frozen with care.</h2>
+              <p>Quick freezing helps keep good ingredients ready for the meals and moments that matter.</p>
+            </article>
+            <article class="story-chapter" data-chapter="3" aria-hidden="true">
+              <span class="story-kicker">MADE FOR EVERY KITCHEN</span>
+              <h2>Good food, made practical.</h2>
+              <p>From a quick family meal to a busy professional kitchen, Pal Fresh and Frozzo make it easy to serve something good.</p>
+            </article>
+            <article class="story-chapter" data-chapter="4" aria-hidden="true">
+              <span class="story-kicker">FROM HALDWANI, WITH GOODNESS</span>
+              <h2>Ready when you are.</h2>
+              <p>Carefully grown, frozen, and delivered - a little more goodness for every table.</p>
+            </article>
+          </div>
+
+          <div class="story-footer">
+            <span class="story-scroll-hint">Scroll to follow the journey</span>
+            <div class="story-progress" role="progressbar" aria-label="Story progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="storyProgress"></span>
+            </div>
+            <span class="story-frame-count frame-loader" id="frameStatus" aria-live="polite">Preparing the story...</span>
+          </div>
+          <p class="visually-hidden" id="chapterAnnouncement" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="story-end" id="story-end">
+        <span class="story-kicker">PAL FRESH × FROZZO</span>
+        <h2>Good food brings us together.</h2>
+        <p>Rooted in Uttarakhand. Ready for wherever the day takes you.</p>
+        <a href="#top">Replay the story <span aria-hidden="true">↑</span></a>
+      </section>
+    </main>
+  </body>
+</html>

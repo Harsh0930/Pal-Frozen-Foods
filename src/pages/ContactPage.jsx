@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Accordion, AccordionDetails, AccordionSummary, Dialog, DialogContent, IconButton, TextField } from '@mui/material';
 import AccessTimeOutlined from '@mui/icons-material/AccessTimeOutlined';
+import CallOutlined from '@mui/icons-material/CallOutlined';
 import EmailOutlined from '@mui/icons-material/EmailOutlined';
 import LocationOnOutlined from '@mui/icons-material/LocationOnOutlined';
 import SearchRounded from '@mui/icons-material/SearchRounded';
@@ -34,8 +35,9 @@ export default function ContactPage() {
     <div className="contact-content" role="tabpanel">
       {activeTab === 0 && <div className="contact-general">
         <div className="contact-intro"><span className="eyebrow">SAY HELLO</span><h2>We’d love to<br /><em>hear from you.</em></h2><p>Fill in a few details and our team will be in touch as soon as possible.</p>
-          <div className="contact-detail"><span><EmailOutlined aria-hidden="true" /></span><div><small>EMAIL US</small><a href="mailto:hello@palfrozenfoods.com">hello@palfrozenfoods.com</a></div></div>
-          <div className="contact-detail"><span><LocationOnOutlined aria-hidden="true" /></span><div><small>OUR HOME BASE</small><p>India · Reach out for office and plant details</p></div></div>
+          <div className="contact-detail"><span><EmailOutlined aria-hidden="true" /></span><div><small>EMAIL US</small><a href="mailto:marketing@smpalgroup.com">marketing@smpalgroup.com</a></div></div>
+          <div className="contact-detail"><span><CallOutlined aria-hidden="true" /></span><div><small>CALL US</small><a href="tel:+919045599277">+91 9045599277</a></div></div>
+          <div className="contact-detail"><span><LocationOnOutlined aria-hidden="true" /></span><div><small>OUR HOME BASE</small><address>Palam City, Devalchaur, Rampur Road,<br />Haldwani - <a href="https://www.wikidata.org/wiki/Q1499" target="_blank" rel="noreferrer">Uttarakhand</a> 263139</address></div></div>
           <div className="contact-detail"><span><AccessTimeOutlined aria-hidden="true" /></span><div><small>WHEN WE’RE AROUND</small><p>Monday–Saturday, 9:30 am–6:00 pm IST</p></div></div>
         </div>
         <form className="form-card" onSubmit={(event) => sendForm(event, 'Thanks for reaching out. We’ll be in touch soon.')}>
@@ -48,7 +50,7 @@ export default function ContactPage() {
         </form>
       </div>}
       {activeTab === 1 && <section className="faq-section">
-        <div className="tab-intro"><span className="eyebrow">THE LITTLE THINGS, ANSWERED</span><h2>Good questions.<br /><em>Good answers.</em></h2><p>Can’t find what you’re looking for? <a href="mailto:hello@palfrozenfoods.com">Just ask us ↗</a></p></div>
+        <div className="tab-intro"><span className="eyebrow">THE LITTLE THINGS, ANSWERED</span><h2>Good questions.<br /><em>Good answers.</em></h2><p>Can’t find what you’re looking for? <a href="mailto:marketing@smpalgroup.com">Just ask us ↗</a></p></div>
         <div className="faq-controls"><label className="search-field"><SearchRounded aria-hidden="true" /><input aria-label="Search FAQs" placeholder="What are you wondering?" value={faqSearch} onChange={(event) => setFaqSearch(event.target.value)} /></label><div className="faq-categories">{['All topics', ...new Set(faqs.map((faq) => faq.category))].map((item) => <button key={item} className={faqCategory === item ? 'filter-active' : ''} onClick={() => setFaqCategory(item)}>{item}</button>)}</div></div>
         <div className="faq-list">{filteredFaqs.map((faq) => <Accordion key={faq.question} disableGutters elevation={0}><AccordionSummary expandIcon={<span className="accordion-icon">+</span>}><span className="faq-category">{faq.category}</span><strong>{faq.question}</strong></AccordionSummary><AccordionDetails>{faq.answer}</AccordionDetails></Accordion>)}
           {filteredFaqs.length === 0 && <p className="no-faqs">No questions match that search. Try another term.</p>}</div>

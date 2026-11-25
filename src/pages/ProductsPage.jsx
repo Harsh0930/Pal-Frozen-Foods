@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import AcUnitRounded from '@mui/icons-material/AcUnitRounded';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
+import KeyboardArrowDownRounded from '@mui/icons-material/KeyboardArrowDownRounded';
 import SearchRounded from '@mui/icons-material/SearchRounded';
-import { useBrand, brandNames } from '../context/BrandThemeContext.jsx';
+import { useBrand } from '../context/BrandThemeContext.jsx';
 import BrandLogo from '../components/common/BrandLogo.jsx';
 import BrandToggle from '../components/products/BrandToggle.jsx';
 import ProductTile from '../components/products/ProductTile.jsx';
 import ProductDialog from '../components/products/ProductDialog.jsx';
 import { products, productBrandInfo } from '../data/products.js';
+
+const productPageSizes = { 'pal-fresh': 3, frozzo: 6 };
 
 const productNameFilters = {
   'pal-fresh': [
@@ -31,12 +34,14 @@ export default function ProductsPage() {
   const [query, setQuery] = useState('');
   const [nameFilter, setNameFilter] = useState('all');
   const [selected, setSelected] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(productPageSizes['pal-fresh']);
   const requestedBrand = searchParams.get('brand');
   useEffect(() => {
     if (requestedBrand === 'pal-fresh' || requestedBrand === 'frozzo') {
       setBrand(requestedBrand);
       setQuery('');
       setNameFilter('all');
+      setVisibleCount(productPageSizes[requestedBrand]);
     }
   }, [requestedBrand, setBrand]);
   const filters = productNameFilters[brand];
@@ -44,10 +49,12 @@ export default function ProductsPage() {
   const listing = products.filter((item) => item.brand === brand)
     .filter((item) => item.name.toLowerCase().includes(query.toLowerCase()))
     .filter((item) => activeFilter.matches(item.name.toLowerCase()));
+  const visibleProducts = listing.slice(0, visibleCount);
   const switchBrand = (value) => {
     setBrand(value);
     setQuery('');
     setNameFilter('all');
+    setVisibleCount(productPageSizes[value]);
     setSearchParams({ brand: value }, { replace: true });
   };
   return <main className={`products-page products-${brand}`}>
@@ -62,7 +69,7 @@ export default function ProductsPage() {
         <p>{productBrandInfo[brand].description}</p>
       </section>
       <div className="catalog-toolbar">
-        <label className="search-field"><SearchRounded aria-hidden="true" /><input aria-label="Search products" placeholder="Find something good..." value={query} onChange={(event) => setQuery(event.target.value)} /><kbd>⌘ K</kbd></label>
+        <label className="search-field"><SearchRounded aria-hidden="true" /><input aria-label="Search products" placeholder="Find something good..." value={query} onChange={(event) => { setQuery(event.target.value); setVisibleCount(productPageSizes[brand]); }} /><kbd>⌘ K</kbd></label>
       </div>
       <div className="catalog-name-filters" role="group" aria-label="Filter products by name">
         <span>Filter by name</span>
@@ -71,16 +78,16 @@ export default function ProductsPage() {
           type="button"
           className={nameFilter === filter.id ? 'filter-active' : ''}
           aria-pressed={nameFilter === filter.id}
-          onClick={() => setNameFilter(filter.id)}
+          onClick={() => { setNameFilter(filter.id); setVisibleCount(productPageSizes[brand]); }}
         >{filter.label}</button>)}
       </div>
-      <div className="catalog-result"><span>{listing.length} good things to choose from</span><span>{brandNames[brand]} collection</span></div>
-      {listing.length > 0 ? <div className="product-grid">{listing.map((item) => <ProductTile product={item} key={item.id} onOpen={setSelected} />)}</div> : <div className="empty-results"><span>⌕</span><h2>No matches just yet.</h2><p>Try another search to find your next favourite.</p><button className="text-link" onClick={() => { setQuery(''); setNameFilter('all'); }}>Clear filters ↗</button></div>}
-      <div className="catalog-see-more">
-        <a className="see-more-products" href={productBrandInfo[brand].sourceUrl} target="_blank" rel="noreferrer">
-          See more products <ArrowOutwardRounded aria-hidden="true" />
-        </a>
-      </div>
+      <div className="catalog-result"><span>{listing.length} {listing.length === 1 ? 'product' : 'products'}</span></div>
+      {listing.length > 0 ? <div className="product-grid">{visibleProducts.map((item) => <ProductTile product={item} key={item.id} onOpen={setSelected} />)}</div> : <div className="empty-results"><span>⌕</span><h2>No matches just yet.</h2><p>Try another search to find your next favourite.</p><button className="text-link" onClick={() => { setQuery(''); setNameFilter('all'); setVisibleCount(productPageSizes[brand]); }}>Clear filters ↗</button></div>}
+      {listing.length > visibleCount && <div className="catalog-see-more">
+        <button className="see-more-products" type="button" onClick={() => setVisibleCount((count) => Math.min(count + productPageSizes[brand], listing.length))}>
+          See more products <KeyboardArrowDownRounded aria-hidden="true" />
+        </button>
+      </div>}
     </div>
     <section className="catalog-note"><AcUnitRounded aria-hidden="true" /><p>Looking for product or packaging details?<br /><b>Contact our team for current specifications.</b></p><Link to="/contact">Get in touch <i><ArrowOutwardRounded aria-hidden="true" /></i></Link></section>
     <ProductDialog product={selected} onClose={() => setSelected(null)} />

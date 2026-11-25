@@ -25,8 +25,10 @@ Product, FAQ, career, gallery, and privacy content lives in `src/data/`; `src/Ap
 - `src/pages/` contains the routed page views.
 - `src/components/common/` and `src/components/products/` contain shared UI.
 - `src/context/` manages the active brand; `src/data/` holds catalog and page content.
-- `src/assets/brands/` contains the Pal Fresh and Frozzo logos; `public/` contains the corporate logo and favicon.
+- `src/assets/brands/` contains the Pal Fresh and Frozzo logos; `public/` contains the corporate mark and other static assets.
+- `public/scroll-story/` keeps the standalone scroll-story page, its scripts and styles, and its frame sequence together.
 - `src/styles/global.css` contains global and responsive styling.
+- `docs/` contains project reference documents and UI/UX requirements.
 
 ## Brand typography
 
