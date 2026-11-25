@@ -3,6 +3,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Button } from '@mui/mate
 import AgricultureOutlined from '@mui/icons-material/AgricultureOutlined';
 import AcUnitRounded from '@mui/icons-material/AcUnitRounded';
 import ArrowDownwardRounded from '@mui/icons-material/ArrowDownwardRounded';
+import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import LocalShippingOutlined from '@mui/icons-material/LocalShippingOutlined';
 import VerifiedOutlined from '@mui/icons-material/VerifiedOutlined';
@@ -10,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { faqs } from '../data/faqs.js';
 import { imageUrl } from '../utils/imageUrl.js';
 import ScrollStoryEmbed from '../components/home/ScrollStoryEmbed.jsx';
+import { useBrand } from '../context/BrandThemeContext.jsx';
 
 const facts = [
   ['2013', 'Started', 'A venture of SM Pal Group'],
@@ -36,33 +38,72 @@ const reasons = [
   ['Pack sizes that fit', 'Choose shop packs, larger kitchen packs or bulk supply.'],
 ];
 
+const heroBrands = [
+  {
+    key: 'pal-fresh',
+    name: 'Pal Fresh',
+    category: 'Vegetables',
+    descriptor: 'FARM TO FREEZER',
+    title: 'Everyday goodness.',
+    image: 'photo-1540420773420-3366772f4999',
+    alt: 'A vibrant bowl of fresh vegetables',
+  },
+  {
+    key: 'frozzo',
+    name: 'Frozzo',
+    category: 'Snacks',
+    descriptor: 'READY TO COOK',
+    title: 'Good times, made easy.',
+    image: 'photo-1630384060421-cb20d0e0649d',
+    alt: 'Golden crispy potato snacks ready to share',
+  },
+];
+
 export default function Home() {
+  const { brand, setBrand } = useBrand();
+  const foundHeroIndex = heroBrands.findIndex((heroBrand) => heroBrand.key === brand);
+  const activeHeroIndex = foundHeroIndex < 0 ? 0 : foundHeroIndex;
+  const activeHero = heroBrands[activeHeroIndex];
+
   return <main className="home-page">
-    <section className="hero home-hero">
-      <div className="hero-copy">
-        <span className="eyebrow"><i /> FROM UTTARAKHAND, FOR EVERY KITCHEN</span>
-        <h1>Pal Frozen Foods: farm-grown frozen vegetables and snacks from Uttarakhand</h1>
-        <p>Pal Frozen Foods is a frozen food company based in Haldwani, Uttarakhand, and a venture of SM Pal Group. We grow, freeze and supply vegetables and ready-to-cook snacks for homes, hotels, caterers and bulk buyers across India and overseas, under our own labels Pal Fresh and Frozzo.</p>
-        <p>Busy kitchens need food that’s ready when they are. Take a look at the full range, or talk to our team if you’re buying in volume.</p>
-        <div className="hero-actions">
-          <Button component={Link} to="/products" className="button-primary" variant="contained">Explore the full range <span>↗</span></Button>
-          <Link className="underlined-link" to="/contact?tab=distributor">Buying in volume? <span>→</span></Link>
+    <section className="home-hero" aria-labelledby="home-hero-heading">
+      <div className="home-hero-copy">
+        <span className="eyebrow"><i /> GOOD FOOD FROM UTTARAKHAND</span>
+        <h1 id="home-hero-heading">Good food.<br /><em>Ready when you are.</em></h1>
+        <p>Farm-grown vegetables and feel-good snacks, frozen fresh in Uttarakhand.</p>
+        <div className="home-hero-actions">
+          <Button component={Link} to="/products" className="button-primary" variant="contained">Explore the range <ArrowOutwardRounded aria-hidden="true" /></Button>
+          <Link className="home-hero-partner-link" to="/contact?tab=distributor">Partner with us <span aria-hidden="true">↗</span></Link>
         </div>
-        <div className="hero-footnote">Farm-grown. Carefully frozen. Ready when you are.</div>
+        <div className="home-hero-brand-picker" role="group" aria-label="Choose a product range">
+          {heroBrands.map((brand, index) => <button
+            aria-pressed={activeHeroIndex === index}
+            className={`home-hero-brand-option home-hero-brand-option-${brand.key}${activeHeroIndex === index ? ' is-active' : ''}`}
+            key={brand.key}
+            onClick={() => setBrand(brand.key)}
+            type="button"
+          >
+            <span className="home-hero-brand-index">0{index + 1}</span>
+            <span className="home-hero-brand-copy"><strong>{brand.name}</strong><small>{brand.category}</small></span>
+            <ArrowOutwardRounded className="home-hero-brand-arrow" aria-hidden="true" />
+          </button>)}
+        </div>
       </div>
-      <div className="hero-visual">
-        <Link aria-label="Explore Pal Fresh frozen vegetables" className="hero-split fresh-split" to="/products?brand=pal-fresh">
-          <img src={imageUrl('photo-1540420773420-3366772f4999', 1300)} alt="A vibrant bowl of vegetables" />
-          <div className="hero-shade" />
-          <span className="universe-index">PAL FRESH · VEGETABLES</span>
-          <div className="universe-label"><span>FARM TO FREEZER</span><h2>Everyday<br />goodness.</h2><i>Explore the range <ArrowOutwardRounded aria-hidden="true" /></i></div>
-        </Link>
-        <Link aria-label="Explore Frozzo frozen snacks" className="hero-split frozzo-split" to="/products?brand=frozzo">
-          <img src={imageUrl('photo-1630384060421-cb20d0e0649d', 1300)} alt="Golden crispy fries served to share" />
-          <div className="hero-shade" />
-          <span className="universe-index">FROZZO · SNACKS</span>
-          <div className="universe-label"><span>READY TO COOK</span><h2>Good times,<br />on the go.</h2><i>Meet the range <ArrowOutwardRounded aria-hidden="true" /></i></div>
-        </Link>
+      <div className={`home-hero-stage home-hero-stage-${activeHero.key}`} role="region" aria-label={`${activeHero.name} product feature`} aria-live="polite">
+        <img key={activeHero.key} className="home-hero-stage-image" src={imageUrl(activeHero.image, 1500)} alt={activeHero.alt} />
+        <div className="home-hero-stage-meta">
+          <span>0{activeHeroIndex + 1} <i /> 0{heroBrands.length}</span>
+          <span>HALDWANI · UTTARAKHAND</span>
+        </div>
+        <div className="home-hero-stage-caption">
+          <div>
+            <span>{activeHero.descriptor}</span>
+            <h2>{activeHero.title}</h2>
+          </div>
+          <Link aria-label={`Explore ${activeHero.name}`} className="home-hero-stage-link" to={`/products?brand=${activeHero.key}`}>
+            <ArrowForwardRounded aria-hidden="true" />
+          </Link>
+        </div>
       </div>
     </section>
 
