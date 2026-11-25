@@ -9,6 +9,7 @@ import VerifiedOutlined from '@mui/icons-material/VerifiedOutlined';
 import { Link } from 'react-router-dom';
 import { faqs } from '../data/faqs.js';
 import { imageUrl } from '../utils/imageUrl.js';
+import ScrollStoryEmbed from '../components/home/ScrollStoryEmbed.jsx';
 
 const facts = [
   ['2013', 'Started', 'A venture of SM Pal Group'],
@@ -76,6 +77,8 @@ export default function Home() {
         </article>)}
       </div>
     </section>
+
+    <ScrollStoryEmbed />
 
     <section className="home-journey section-pad" aria-labelledby="home-journey-heading">
       <div className="home-journey-heading">
