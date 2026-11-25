@@ -1,6 +1,6 @@
 import React from 'react';
-import frozzoLogo from '../../assets/brands/frozzo-logo.png';
-import palFreshLogo from '../../assets/brands/pal-fresh-logo.png';
+import frozzoLogo from '../../assets/brands/frozzo-logo.webp';
+import palFreshLogo from '../../assets/brands/pal-fresh-logo.webp';
 const logos = { 'pal-fresh': palFreshLogo, frozzo: frozzoLogo };
 const labels = { 'pal-fresh': 'Pal Fresh', frozzo: 'Frozzo' };
 export default function BrandLogo({ brand, className = '', alt }) {

@@ -14,7 +14,7 @@ export default function ProductDialog({ product, onClose }) {
         <h2>{product.name}</h2>
         <span className="dialog-range-label">About {brandNames[product.brand]}</span>
         <p>{brandInfo.description}</p>
-        <a className="official-product-link" href={brandInfo.sourceUrl} target="_blank" rel="noreferrer">See all {brandNames[product.brand]} products ↗</a>
+        <Link className="official-product-link" to={`/products?brand=${product.brand}`} onClick={onClose}>See all {brandNames[product.brand]} products ↗</Link>
         <Button component={Link} to="/contact?tab=distributor" variant="contained" className="button-primary" onClick={onClose}>Bulk / distributor inquiry ↗</Button>
       </div>
     </DialogContent>}

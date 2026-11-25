@@ -1,13 +1,32 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export default function ScrollStoryEmbed() {
   const trackRef = useRef(null);
   const frameRef = useRef(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return undefined;
+    if (!('IntersectionObserver' in window)) {
+      setShouldLoad(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setShouldLoad(true);
+        observer.disconnect();
+      }
+    }, { rootMargin: '100px 0px' });
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const track = trackRef.current;
     const frame = frameRef.current;
-    if (!track || !frame) return undefined;
+    if (!shouldLoad || !track || !frame) return undefined;
 
     let updateId = 0;
     const sendProgress = () => {
@@ -34,16 +53,16 @@ export default function ScrollStoryEmbed() {
       frame.removeEventListener('load', scheduleProgress);
       if (updateId) window.cancelAnimationFrame(updateId);
     };
-  }, []);
+  }, [shouldLoad]);
 
   return <div className="scroll-story-embed-track" ref={trackRef}>
-    <iframe
-      className="scroll-story-embed"
-      ref={frameRef}
-      src="/scroll-story/index.html?embedded=1"
-      title="Pal Frozen Foods from field to freezer scroll story"
-      loading="lazy"
-      scrolling="no"
-    />
+    {shouldLoad && <iframe
+        className="scroll-story-embed"
+        ref={frameRef}
+        src="/scroll-story/index.html?embedded=1"
+        title="Pal Frozen Foods from field to freezer scroll story"
+        loading="lazy"
+        scrolling="no"
+      />}
   </div>;
 }

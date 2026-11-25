@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
-import { Button } from '@mui/material';
 import ArrowOutwardRounded from '@mui/icons-material/ArrowOutwardRounded';
 import CloseRounded from '@mui/icons-material/CloseRounded';
 import MenuRounded from '@mui/icons-material/MenuRounded';
@@ -40,18 +38,16 @@ export default function Navbar() {
           {label}
         </NavLink>)}
       </nav>
-      <Button component={Link} to="/contact?tab=distributor" className="nav-cta">Become a partner <ArrowOutwardRounded aria-hidden="true" /></Button>
+      <Link to="/contact?tab=distributor" className="nav-cta">Become a partner <ArrowOutwardRounded aria-hidden="true" /></Link>
       <button className={`menu-toggle${menuOpen ? ' menu-open' : ''}`} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
         {menuOpen ? <CloseRounded /> : <MenuRounded />}
       </button>
     </div>
-    <AnimatePresence>
-      {menuOpen && <motion.nav className="mobile-nav" aria-label="Mobile navigation" initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}>
-        {navItems.map(([label, path], index) => <motion.div key={path} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.045 }}>
+      {menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation">
+        {navItems.map(([label, path]) => <div key={path}>
           <NavLink to={path} onClick={() => setMenuOpen(false)}>{label}<ArrowOutwardRounded aria-hidden="true" /></NavLink>
-        </motion.div>)}
+        </div>)}
         <Link className="mobile-partner" to="/contact?tab=distributor" onClick={() => setMenuOpen(false)}>Become a partner <ArrowOutwardRounded aria-hidden="true" /></Link>
-      </motion.nav>}
-    </AnimatePresence>
+      </nav>}
   </header>;
 }

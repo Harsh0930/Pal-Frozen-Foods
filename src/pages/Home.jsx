@@ -1,5 +1,4 @@
 import React from 'react';
-import { Accordion, AccordionDetails, AccordionSummary, Button } from '@mui/material';
 import AgricultureOutlined from '@mui/icons-material/AgricultureOutlined';
 import AcUnitRounded from '@mui/icons-material/AcUnitRounded';
 import ArrowDownwardRounded from '@mui/icons-material/ArrowDownwardRounded';
@@ -45,7 +44,8 @@ const heroBrands = [
     category: 'Vegetables',
     descriptor: 'FARM TO FREEZER',
     title: 'Everyday goodness.',
-    image: 'photo-1540420773420-3366772f4999',
+    image: '/images/pal-fresh-home-hero.webp',
+    mobileImage: '/images/pal-fresh-home-hero-mobile.webp',
     alt: 'A vibrant bowl of fresh vegetables',
   },
   {
@@ -54,7 +54,8 @@ const heroBrands = [
     category: 'Snacks',
     descriptor: 'READY TO COOK',
     title: 'Good times, made easy.',
-    image: 'photo-1630384060421-cb20d0e0649d',
+    image: '/images/frozzo-home-hero.webp',
+    mobileImage: '/images/frozzo-home-hero-mobile.webp',
     alt: 'Golden crispy potato snacks ready to share',
   },
 ];
@@ -72,7 +73,7 @@ export default function Home() {
         <h1 id="home-hero-heading">Good food.<br /><em>Ready when you are.</em></h1>
         <p>Farm-grown vegetables and feel-good snacks, frozen fresh in Uttarakhand.</p>
         <div className="home-hero-actions">
-          <Button component={Link} to="/products" className="button-primary" variant="contained">Explore the range <ArrowOutwardRounded aria-hidden="true" /></Button>
+          <Link to="/products" className="button-primary">Explore the range <ArrowOutwardRounded aria-hidden="true" /></Link>
           <Link className="home-hero-partner-link" to="/contact?tab=distributor">Partner with us <span aria-hidden="true">↗</span></Link>
         </div>
         <div className="home-hero-brand-picker" role="group" aria-label="Choose a product range">
@@ -90,7 +91,17 @@ export default function Home() {
         </div>
       </div>
       <div className={`home-hero-stage home-hero-stage-${activeHero.key}`} role="region" aria-label={`${activeHero.name} product feature`} aria-live="polite">
-        <img key={activeHero.key} className="home-hero-stage-image" src={imageUrl(activeHero.image, 1500)} alt={activeHero.alt} />
+        <picture>
+          <source media="(max-width: 700px)" srcSet={activeHero.mobileImage} />
+          <img
+            key={activeHero.key}
+            className="home-hero-stage-image"
+            src={activeHero.image}
+            alt={activeHero.alt}
+            loading="eager"
+            fetchPriority="high"
+          />
+        </picture>
         <div className="home-hero-stage-meta">
           <span>0{activeHeroIndex + 1} <i /> 0{heroBrands.length}</span>
           <span>HALDWANI · UTTARAKHAND</span>
@@ -206,12 +217,13 @@ export default function Home() {
         <Link className="underlined-link" to="/contact?tab=faq">Browse all FAQs <span>→</span></Link>
       </div>
       <div className="home-faq-list">
-        {faqs.map((faq, index) => <Accordion key={faq.question} disableGutters elevation={0}>
-          <AccordionSummary expandIcon={<ArrowDownwardRounded aria-hidden="true" />} aria-controls={`home-faq-answer-${index}`} id={`home-faq-question-${index}`}>
+        {faqs.map((faq, index) => <details className="home-faq-item" key={faq.question}>
+          <summary id={`home-faq-question-${index}`} aria-controls={`home-faq-answer-${index}`}>
             <span className="home-faq-question">{faq.question}</span>
-          </AccordionSummary>
-          <AccordionDetails id={`home-faq-answer-${index}`}>{faq.answer}</AccordionDetails>
-        </Accordion>)}
+            <ArrowDownwardRounded aria-hidden="true" />
+          </summary>
+          <div className="home-faq-answer" id={`home-faq-answer-${index}`}>{faq.answer}</div>
+        </details>)}
       </div>
     </section>
 
@@ -219,7 +231,7 @@ export default function Home() {
       <div className="home-contact-copy">
         <span className="eyebrow">LET’S TALK SUPPLY</span><h2 id="contact">Talk to Pal<br />Frozen Foods.</h2>
         <p>Want to stock our range, supply your kitchen or become a distribution partner? Tell us what you need, how much and where, and our team will get back to you.</p>
-        <Button component={Link} to="/contact" className="button-light">Send an enquiry <span>↗</span></Button>
+        <Link to="/contact" className="button-light">Send an enquiry <span>↗</span></Link>
       </div>
       <div className="home-contact-address"><span className="home-contact-pin"><LocalShippingOutlined aria-hidden="true" /></span><span className="eyebrow">OUR HOME BASE</span><address>Pal Frozen Foods<br />Palam City, Devalchaur, Rampur Road<br />Haldwani - <a href="https://www.wikidata.org/wiki/Q1499" target="_blank" rel="noreferrer">Uttarakhand</a> 263139</address></div>
     </section>

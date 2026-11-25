@@ -6,9 +6,23 @@
     <meta name="theme-color" content="#f5f8fa" />
     <meta name="description" content="Pal Frozen Foods brings farm-fresh frozen vegetables and snacks under Pal Fresh and Frozzo. 30+ products for retail & bulk, made in Haldwani. Explore the range." />
     <link rel="icon" type="image/png" href="/pal-frozen-mark.png" />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Eczar:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+    <script>
+      if (window.location.pathname === '/') {
+        const mobile = window.matchMedia('(max-width: 700px)').matches;
+        const preload = document.createElement('link');
+        preload.rel = 'preload';
+        preload.as = 'image';
+        preload.href = mobile ? '/images/pal-fresh-home-hero-mobile.webp' : '/images/pal-fresh-home-hero.webp';
+        preload.fetchPriority = 'high';
+        preload.media = mobile ? '(max-width: 700px)' : '(min-width: 701px)';
+        document.head.appendChild(preload);
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Eczar:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Eczar:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" /></noscript>
     <title>Pal Frozen Foods | Farm-Fresh Frozen Veggies &amp; Snacks</title>
   </head>
   <body>

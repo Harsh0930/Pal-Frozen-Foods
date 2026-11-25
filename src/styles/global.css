@@ -40,6 +40,11 @@ img { display: block; max-width: 100%; }
 h1, h2, h3, h4, p { margin-top: 0; }
 h1, h2, h3 { font-family: var(--display); letter-spacing: -.045em; }
 h1 em, h2 em { color: var(--green); font-style: normal; }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .72s ease, transform .72s ease; }
+.reveal.is-revealed { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
 .section-pad { padding: 112px max(6.6vw, 24px); }
 .section-heading h2 { margin: 16px 0 0; font-size: clamp(38px, 5vw, 67px); line-height: .99; font-weight: 600; }
 .section-heading > p { max-width: 430px; margin: 20px 0 0; color: var(--muted); font-size: 18px; line-height: 1.8; }
@@ -48,7 +53,7 @@ h1 em, h2 em { color: var(--green); font-style: normal; }
 html[data-brand="frozzo"] .site-header { background: rgba(2,39,50,.96); border-color: rgba(99,181,201,.2); color: #f2f7f8; }
 html[data-brand="frozzo"] .site-header.scrolled { background: rgba(2,39,50,.98); }
 html[data-brand="frozzo"] .brand-mark, html[data-brand="frozzo"] .nav-link { color: #f2f7f8; }
-html[data-brand="frozzo"] .nav-cta.MuiButton-root { border-color: rgba(99,181,201,.38); color: var(--cyan); }
+html[data-brand="frozzo"] .nav-cta { border-color: rgba(99,181,201,.38); color: var(--cyan); }
 html[data-brand="frozzo"] .nav-cta svg { color: var(--cyan); }
 html[data-brand="frozzo"] .menu-toggle { color: var(--cyan); }
 .nav-wrap { width: min(1440px, 100%); height: 100%; margin: auto; padding: 0 5.3%; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
@@ -62,8 +67,8 @@ html[data-brand="frozzo"] .menu-toggle { color: var(--cyan); }
 .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
 html[data-brand="frozzo"] .nav-link:hover, html[data-brand="frozzo"] .nav-link.active { color: var(--cyan); }
 html[data-brand="frozzo"] .nav-link::after { background: var(--cyan); }
-.nav-cta.MuiButton-root { min-width: 152px; padding: 11px 15px; border: 1px solid rgba(255,255,255,.4); border-radius: 99px; color: #fff; font-size: 13px; font-weight: 700; }
-.nav-cta.MuiButton-root:hover { border-color: rgba(255,255,255,.75); background: rgba(255,255,255,.08); }
+.nav-cta.MuiButton-root, a.nav-cta { display: inline-flex; align-items: center; min-width: 152px; padding: 11px 15px; border: 1px solid rgba(255,255,255,.4); border-radius: 99px; color: #fff; font-size: 13px; font-weight: 700; text-decoration: none; }
+.nav-cta.MuiButton-root:hover, a.nav-cta:hover { border-color: rgba(255,255,255,.75); background: rgba(255,255,255,.08); }
 .nav-cta svg { margin-left: 8px; color: var(--green); font-size: 17px; }
 .menu-toggle { display: none; width: 42px; height: 42px; padding: 9px; border: 0; background: transparent; color: #fff; cursor: pointer; }
 .menu-toggle svg { width: 24px; height: 24px; }
@@ -72,8 +77,8 @@ html[data-brand="frozzo"] .nav-link::after { background: var(--cyan); }
 .menu-open span:last-child { transform: translateY(-3px) rotate(-45deg); }
 .mobile-nav { display: none; }
 .page-hero h1, .contact-hero h1, .gallery-hero h1, .privacy-hero h1 { margin: 23px 0 17px; font-size: clamp(58px, 7.3vw, 100px); font-weight: 500; line-height: .89; letter-spacing: -.075em; }
-.button-primary.MuiButton-root { padding: 13px 20px; border-radius: 999px; background: var(--forest); color: white; font-size: 14px; box-shadow: none; }
-.button-primary.MuiButton-root:hover { background: var(--green); box-shadow: none; }
+.button-primary.MuiButton-root, a.button-primary { display: inline-flex; align-items: center; padding: 13px 20px; border-radius: 999px; background: var(--forest); color: white; font-size: 14px; text-decoration: none; box-shadow: none; }
+.button-primary.MuiButton-root:hover, a.button-primary:hover { background: var(--green); color: white; box-shadow: none; }
 .button-primary span { margin-left: 12px; color: var(--lime); font-size: 16px; }
 .underlined-link { display: inline-flex; align-items: center; gap: 12px; padding-bottom: 4px; border-bottom: 1px solid rgba(32,96,64,.35); color: var(--forest); font-size: 14px; font-weight: 700; }
 .underlined-link span, .underlined-link i { font-size: 17px; font-style: normal; transition: transform .2s; }
@@ -85,7 +90,7 @@ html[data-brand="frozzo"] .nav-link::after { background: var(--cyan); }
 .home-hero-copy h1 em { color: var(--green); }
 .home-hero-copy > p { max-width: 430px; margin-bottom: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
 .home-hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 20px; margin: 28px 0 31px; }
-.home-hero-actions .button-primary.MuiButton-root { min-height: 48px; }
+.home-hero-actions .button-primary { min-height: 48px; }
 .home-hero-actions .button-primary svg { margin-left: 8px; color: var(--lime); font-size: 18px; transition: transform .2s; }
 .home-hero-actions .button-primary:hover svg { transform: translate(2px,-2px); }
 .home-hero-partner-link { display: inline-flex; align-items: center; gap: 8px; color: var(--forest); font-size: 13px; font-weight: 700; }
@@ -126,8 +131,8 @@ html[data-brand="frozzo"] .home-hero .eyebrow { color: var(--cyan); }
 html[data-brand="frozzo"] .home-hero .eyebrow i { background: var(--cyan); }
 html[data-brand="frozzo"] .home-hero-copy h1 em { color: var(--cyan); }
 html[data-brand="frozzo"] .home-hero-copy > p { color: rgba(242,247,248,.72); }
-html[data-brand="frozzo"] .home-hero-actions .button-primary.MuiButton-root { background: var(--cyan); color: var(--night); }
-html[data-brand="frozzo"] .home-hero-actions .button-primary.MuiButton-root:hover { background: #8ad0dc; }
+html[data-brand="frozzo"] .home-hero-actions .button-primary { background: var(--cyan); color: var(--night); }
+html[data-brand="frozzo"] .home-hero-actions .button-primary:hover { background: #8ad0dc; }
 html[data-brand="frozzo"] .home-hero-partner-link { color: #f2f7f8; }
 html[data-brand="frozzo"] .home-hero-partner-link span { color: var(--cyan); }
 html[data-brand="frozzo"] .home-hero-brand-option { border-color: rgba(99,181,201,.2); background: rgba(255,255,255,.045); }
@@ -246,8 +251,8 @@ html[data-brand="frozzo"] .home-hero-stage-link:hover { color: var(--night); }
 .partner-brand-badge b { color: #708f13; font-size: 16px; }
 .partner-visual-note { position: absolute; z-index: 2; right: 0; bottom: 4%; display: flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid rgba(255,255,255,.25); border-radius: 99px; background: rgba(2,15,20,.42); color: rgba(255,255,255,.88); font: 600 9px var(--accent); letter-spacing: .12em; backdrop-filter: blur(8px); }
 .partner-visual-note i { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); }
-.button-light.MuiButton-root { padding: 12px 19px; border-radius: 99px; background: var(--lime); color: var(--forest); font-size: 13px; font-weight: 700; }
-.button-light.MuiButton-root:hover { background: #f2ec50; }
+.button-light.MuiButton-root, a.button-light { display: inline-flex; align-items: center; padding: 12px 19px; border-radius: 99px; background: var(--lime); color: var(--forest); font-size: 13px; font-weight: 700; text-decoration: none; }
+.button-light.MuiButton-root:hover, a.button-light:hover { background: #f2ec50; color: var(--forest); }
 .button-light span { margin-left: 12px; font-size: 16px; }
 .site-footer { position: relative; padding: 85px 7% 0; overflow: hidden; background: var(--night); color: #fff; }
 .footer-frozzo { background: #041a20; }
@@ -591,9 +596,10 @@ html[data-brand="frozzo"] .home-hero-stage-link:hover { color: var(--night); }
   .nav-wrap { padding: 0 5%; }
   .brand-mark { width: 124px; height: 58px; flex-basis: 124px; }
   .brand-mark-logo { width: 124px; height: 58px; }
-  .desktop-nav, .nav-cta.MuiButton-root { display: none; }
+  .desktop-nav, a.nav-cta { display: none; }
   .menu-toggle { display: block; }
-  .mobile-nav { position: absolute; top: 68px; right: 0; left: 0; display: flex; flex-direction: column; padding: 12px 6% 25px; border-top: 1px solid rgba(32,96,64,.1); background: rgba(250,251,248,.98); box-shadow: 0 15px 25px rgba(25,48,30,.09); }
+  .mobile-nav { position: absolute; top: 68px; right: 0; left: 0; display: flex; flex-direction: column; padding: 12px 6% 25px; border-top: 1px solid rgba(32,96,64,.1); background: rgba(250,251,248,.98); box-shadow: 0 15px 25px rgba(25,48,30,.09); animation: mobile-nav-enter .18s ease-out both; }
+  @keyframes mobile-nav-enter { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
   html[data-brand="frozzo"] .mobile-nav { border-color: rgba(99,181,201,.2); background: rgba(2,39,50,.98); }
   html[data-brand="frozzo"] .mobile-nav > div > a { border-color: rgba(99,181,201,.15); color: #f2f7f8; }
   .mobile-nav > div > a { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(32,96,64,.11); color: var(--forest); font: 500 20px var(--display); }
@@ -643,7 +649,7 @@ html[data-brand="frozzo"] .home-hero-stage-link:hover { color: var(--night); }
 }
 @media (max-width: 600px) {
   .section-pad { padding: 68px 6%; }
-  .button-primary.MuiButton-root { padding: 11px 15px; font-size: 12px; }
+  .button-primary.MuiButton-root, a.button-primary { padding: 11px 15px; font-size: 12px; }
   .brand-intro { padding-top: 76px; }
   .section-heading h2 { font-size: clamp(38px,11vw,55px); }
   .section-heading > p { font-size: 14px; }
@@ -832,6 +838,7 @@ html[data-brand="frozzo"] .home-fact strong { color: var(--cyan); }
 .home-brands-heading > p { max-width: 340px; margin-bottom: 20px; }
 .home-brands-heading h2 { margin-bottom: 0; }
 .home-brand-cards { margin-top: 38px; }
+.home-brand-card.brand-card-frozzo { --brand-display: var(--display); --brand-body: "DM Sans",sans-serif; }
 .home-brand-card { min-height: 610px; }
 .home-brand-card .brand-card-content { right: 32px; bottom: 40px; left: 36px; max-width: 430px; }
 .home-brand-card .brand-card-content h3 { margin: 10px 0; font-size: 46px; }
@@ -862,13 +869,13 @@ html[data-brand="frozzo"] .home-fact strong { color: var(--cyan); }
 .home-group-copy .underlined-link { margin-top: 8px; }
 .home-faqs { display: grid; grid-template-columns: .72fr 1.28fr; align-items: start; gap: 7%; background: #fff; }
 .home-faq-heading .underlined-link { margin-top: 12px; }
-.home-faq-list .MuiAccordion-root { border-bottom: 1px solid rgba(32,96,64,.17); background: transparent; }
-.home-faq-list .MuiAccordion-root::before { display: none; }
-.home-faq-list .MuiAccordionSummary-root { min-height: 64px; padding: 0 4px; }
-.home-faq-list .MuiAccordionSummary-content { margin: 16px 0; }
+.home-faq-list .home-faq-item { border-bottom: 1px solid rgba(32,96,64,.17); }
+.home-faq-item > summary { display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: 16px; padding: 0 4px; list-style: none; cursor: pointer; }
+.home-faq-item > summary::-webkit-details-marker { display: none; }
+.home-faq-item > summary svg { flex: 0 0 20px; color: var(--forest); transition: transform .2s; }
+.home-faq-item[open] > summary svg { transform: rotate(180deg); }
 .home-faq-question { color: #2a3a30; font: 600 15px/1.35 var(--display); letter-spacing: -.02em; }
-.home-faq-list .MuiAccordionSummary-expandIconWrapper { color: var(--forest); }
-.home-faq-list .MuiAccordionDetails-root { padding: 0 40px 20px 4px; color: #68766d; font-size: 13px; line-height: 1.8; }
+.home-faq-answer { padding: 0 40px 20px 4px; color: #68766d; font-size: 13px; line-height: 1.8; }
 .home-contact { display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 8%; background: var(--forest); color: #fff; }
 .home-contact-copy .eyebrow { color: var(--lime); }
 .home-contact-copy h2 { margin-bottom: 17px; }
@@ -884,8 +891,8 @@ html[data-brand="frozzo"] .home-contact-copy .eyebrow,
 html[data-brand="frozzo"] .home-contact-copy h2 em { color: var(--cyan); }
 html[data-brand="frozzo"] .home-contact-address { border-color: rgba(99,181,201,.34); background: rgba(99,181,201,.07); }
 html[data-brand="frozzo"] .home-contact-pin { background: var(--cyan); color: var(--night); }
-html[data-brand="frozzo"] .home-contact .button-light.MuiButton-root { background: var(--cyan); color: var(--night); }
-html[data-brand="frozzo"] .home-contact .button-light.MuiButton-root:hover { background: #8ad0dc; }
+html[data-brand="frozzo"] .home-contact .button-light { background: var(--cyan); color: var(--night); }
+html[data-brand="frozzo"] .home-contact .button-light:hover { background: #8ad0dc; }
 @media (max-width: 1100px) {
   .home-hero { gap: 28px; padding-right: 5%; padding-left: 5%; }
   .home-hero-stage { height: min(64svh,560px); min-height: 410px; }
@@ -918,7 +925,7 @@ html[data-brand="frozzo"] .home-contact .button-light.MuiButton-root:hover { bac
   .home-hero-copy h1 { margin-top: 15px; font-size: clamp(39px,10.7vw,55px); }
   .home-hero-copy > p { font-size: 14px; }
   .home-hero-actions { gap: 15px; margin: 21px 0 23px; }
-  .home-hero-actions .button-primary.MuiButton-root { min-height: 43px; }
+  .home-hero-actions .button-primary { min-height: 43px; }
   .home-hero-partner-link { font-size: 12px; }
   .home-hero-brand-picker { gap: 8px; }
   .home-hero-brand-option { min-height: 68px; grid-template-columns: 20px minmax(0,1fr) 15px; gap: 7px; padding: 9px; border-radius: 11px; }
@@ -947,7 +954,8 @@ html[data-brand="frozzo"] .home-contact .button-light.MuiButton-root:hover { bac
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
-.brand-greeting { position: fixed; z-index: 1500; bottom: max(16px,env(safe-area-inset-bottom)); left: max(16px,env(safe-area-inset-left)); display: flex; width: min(360px,calc(100vw - 32px)); align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid rgba(32,96,64,.14); border-radius: 16px; background: #fff; box-shadow: 0 12px 36px rgba(15,35,23,.18); color: var(--ink); }
+.brand-greeting { position: fixed; z-index: 1500; bottom: max(16px,env(safe-area-inset-bottom)); left: max(16px,env(safe-area-inset-left)); display: flex; width: min(360px,calc(100vw - 32px)); align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid rgba(32,96,64,.14); border-radius: 16px; background: #fff; box-shadow: 0 12px 36px rgba(15,35,23,.18); color: var(--ink); animation: greeting-enter .2s ease-out both; }
+@keyframes greeting-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 .brand-greeting-logos { display: flex; flex: 0 0 66px; flex-direction: column; align-items: center; gap: 1px; }
 .brand-greeting-logos > span { color: var(--muted); font-size: 11px; line-height: 1; }
 .brand-greeting-logo { display: block; width: 62px; height: 23px; object-fit: contain; }

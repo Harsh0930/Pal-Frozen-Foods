@@ -5,12 +5,10 @@ export const productBrandInfo = {
   'pal-fresh': {
     title: 'PAL FRESH FROZEN VEGETABLES',
     description: 'At Pal Frozen Foods, we believe healthy eating should be convenient without compromising on nutrition. Our Frozen Vegetables are harvested at the peak of freshness and quickly frozen using advanced IQF (Individually Quick Freezing) technology. This locks in natural taste, color, and nutrients – ensuring you get the best of the farm all year round.',
-    sourceUrl: 'https://www.palfrozenfoods.in/pal-fresh-product',
   },
   frozzo: {
     title: 'FROZZO FROZEN SNACKS',
     description: 'Our Frozen snacks are made with our farm grown fresh vegetables which are cultivated under the support and guidance of our agronomists. To give a delicious bite snacks, our Frozen snacks are carefully seasoned with the flavorful authentic Indian herbs.',
-    sourceUrl: 'https://www.palfrozenfoods.in/frozzo-products',
   },
 };
 
