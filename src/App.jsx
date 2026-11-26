@@ -4,6 +4,7 @@ import { BrandProvider } from './context/BrandThemeContext.jsx';
 import Navbar from './components/common/Navbar.jsx';
 import Footer from './components/common/Footer.jsx';
 import BrandGreeting from './components/common/BrandGreeting.jsx';
+import ContactBot from './components/common/ContactBot.jsx';
 import ScrollReveal from './components/common/ScrollReveal.jsx';
 import Home from './pages/Home.jsx';
 const About = lazy(() => import('./pages/About.jsx'));
@@ -32,5 +33,6 @@ export default function App() {
     </Suspense>
     <Footer />
     <BrandGreeting />
+    <ContactBot />
   </BrandProvider>;
 }

@@ -8,7 +8,7 @@ export default function BrandGreeting() {
     let hideTimer;
     const showTimer = window.setTimeout(() => {
       setVisible(true);
-      hideTimer = window.setTimeout(() => setVisible(false), 1500);
+      hideTimer = window.setTimeout(() => setVisible(false), 3000);
     }, 1000);
 
     return () => {
