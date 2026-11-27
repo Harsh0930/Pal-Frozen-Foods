@@ -67,11 +67,14 @@ export default function Home() {
   const activeHero = heroBrands[activeHeroIndex];
 
   return <main className="home-page">
-    <section className="home-hero" aria-labelledby="home-hero-heading">
+    <section className="home-hero" aria-labelledby="home-hero-heading" style={{ backgroundImage: `url(${activeHero.image})` }}>
+      <div className="hero-overlay" aria-hidden="true" />
       <div className="home-hero-copy">
-        <span className="eyebrow"><i /> GOOD FOOD FROM UTTARAKHAND</span>
-        <h1 id="home-hero-heading">Good food.<br /><em>Ready when you are.</em></h1>
-        <p>Farm-grown vegetables and feel-good snacks, frozen fresh in Uttarakhand.</p>
+        <div className="hero-highlight">
+          <span className="eyebrow"><i /> GOOD FOOD FROM UTTARAKHAND</span>
+          <h1 id="home-hero-heading">Good food.<br /><em>Ready when you are.</em></h1>
+          <p>Farm-grown vegetables and feel-good snacks, frozen fresh in Uttarakhand.</p>
+        </div>
         <div className="home-hero-actions">
           <Link to="/products" className="button-primary">Explore the range <ArrowOutwardRounded aria-hidden="true" /></Link>
           <Link className="home-hero-partner-link" to="/contact?tab=distributor">Partner with us <span aria-hidden="true">↗</span></Link>
@@ -88,32 +91,6 @@ export default function Home() {
             <span className="home-hero-brand-copy"><strong>{brand.name}</strong><small>{brand.category}</small></span>
             <ArrowOutwardRounded className="home-hero-brand-arrow" aria-hidden="true" />
           </button>)}
-        </div>
-      </div>
-      <div className={`home-hero-stage home-hero-stage-${activeHero.key}`} role="region" aria-label={`${activeHero.name} product feature`} aria-live="polite">
-        <picture>
-          <source media="(max-width: 700px)" srcSet={activeHero.mobileImage} />
-          <img
-            key={activeHero.key}
-            className="home-hero-stage-image"
-            src={activeHero.image}
-            alt={activeHero.alt}
-            loading="eager"
-            fetchPriority="high"
-          />
-        </picture>
-        <div className="home-hero-stage-meta">
-          <span>0{activeHeroIndex + 1} <i /> 0{heroBrands.length}</span>
-          <span>HALDWANI · UTTARAKHAND</span>
-        </div>
-        <div className="home-hero-stage-caption">
-          <div>
-            <span>{activeHero.descriptor}</span>
-            <h2>{activeHero.title}</h2>
-          </div>
-          <Link aria-label={`Explore ${activeHero.name}`} className="home-hero-stage-link" to={`/products?brand=${activeHero.key}`}>
-            <ArrowForwardRounded aria-hidden="true" />
-          </Link>
         </div>
       </div>
     </section>

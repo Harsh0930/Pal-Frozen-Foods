@@ -5,9 +5,15 @@ import { imageUrl } from '../utils/imageUrl.js';
 export default function About() {
   const metrics = [['20+', 'years of food know-how'], ['45+', 'cities reached'], ['100%', 'care in every step'], ['2', 'brands, one promise']];
   return <main className="about-page">
-    <section className="page-hero about-hero">
-      <div className="page-hero-copy"><span className="eyebrow">A LITTLE ABOUT US</span><h1>Good food.<br /><em>Good feeling.</em></h1><p>We believe the best things in life should be easy to enjoy. That’s why we bring thoughtful sourcing and careful freezing together, for food that fits real life.</p></div>
-      <div className="about-hero-image"><img src={imageUrl('photo-1500382017468-9049fed747ef', 1600)} alt="Sunlit green farmland at harvest time" /><span className="image-caption">GROWN WITH CARE, EVERY SEASON.</span></div>
+    <section className="page-hero about-hero" style={{ backgroundImage: `url(${imageUrl('photo-1500382017468-9049fed747ef', 1600)})` }}>
+      <div className="hero-overlay" aria-hidden="true" />
+      <div className="page-hero-copy">
+        <div className="hero-highlight">
+          <span className="eyebrow">A LITTLE ABOUT US</span>
+          <h1>Good food.<br /><em>Good feeling.</em></h1>
+          <p>We believe the best things in life should be easy to enjoy. That’s why we bring thoughtful sourcing and careful freezing together, for food that fits real life.</p>
+        </div>
+      </div>
     </section>
     <section className="story-section section-pad">
       <div className="story-image reveal"><img src={imageUrl('photo-1464226184884-fa280b87c399', 1100)} alt="Fresh vegetables gathered from the farm" /></div>

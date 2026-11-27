@@ -8,6 +8,7 @@ import ContactBot from './components/common/ContactBot.jsx';
 import ScrollReveal from './components/common/ScrollReveal.jsx';
 import Home from './pages/Home.jsx';
 const About = lazy(() => import('./pages/About.jsx'));
+const PalFarms = lazy(() => import('./pages/PalFarms.jsx'));
 const ProductsPage = lazy(() => import('./pages/ProductsPage.jsx'));
 const ContactPage = lazy(() => import('./pages/ContactPage.jsx'));
 const GalleryPage = lazy(() => import('./pages/GalleryPage.jsx'));
@@ -24,6 +25,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/pal-farms" element={<PalFarms />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
